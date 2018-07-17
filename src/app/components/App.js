@@ -1,18 +1,12 @@
 import React from 'react';
-import axios from 'axios';
-
-const fetchData = async () => {
-  const resp = await axios.get('https://bakesaleforgood.com/api/deals');
-
-  console.log(resp.data);
-};
-
-fetchData();
+import DealList from './DealList';
 
 class App extends React.Component {
   render() {
     return (
-      <div>App...</div>
+      <div>
+        <DealList deals={this.props.data} />
+      </div>
     );
   }
 }

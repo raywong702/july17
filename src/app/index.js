@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 import App from './components/App';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
-);
+const fetchData = async () => {
+  const resp = await axios.get('https://bakesaleforgood.com/api/deals');
+  ReactDOM.render(
+    <App data={resp.data} />,
+    document.getElementById('root'),
+  );
+};
+
+fetchData();
