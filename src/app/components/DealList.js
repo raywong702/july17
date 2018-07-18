@@ -6,7 +6,13 @@ class DealList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.deals.map((deal) => <Deal key={Math.random()} {...deal} />)}
+        {this.props.deals.map((deal) =>
+          <Deal
+            key={deal.key}
+            id={deal.key}
+            {...deal}
+          />
+        )}
       </div>
     );
   }

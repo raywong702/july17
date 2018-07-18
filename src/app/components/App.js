@@ -1,15 +1,19 @@
 import React from 'react';
 import DealList from './DealList';
 
+import { Provider } from '../appCtx';
+
 class App extends React.Component {
   constructor() {
     super();
   }
   render() {
     return (
-      <div>
-        <DealList deals={this.props.data} />
-      </div>
+      <Provider value={{ discounts: this.props.data.discounts }}>
+        <DealList
+          deals={this.props.data.deals}
+        />
+      </Provider>
     );
   }
 }
