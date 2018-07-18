@@ -7,6 +7,18 @@ const mainReducer = (state, action) => {
         ...state,
         savedDeals: [...state.savedDeals, action.dealId],
       };
+    case 'TOGGLE_DEAL':
+      if (state.expandedDeals.indexOf(action.dealId) >= 0) {
+        return {
+          ...state,
+          expandedDeals: state.expandedDeals.filter((dealId) => dealId !== action.dealId)
+        };
+      } else {
+        return {
+          ...state,
+          expandedDeals: [...state.expandedDeals, action.dealId],
+        };
+      }
     default:
       return state;
   }

@@ -15,7 +15,8 @@ export default async () => {
       'caa2365cf9d5d80d62099e3456c9e0b2',
       'ac9bd5ec830197693b93cc1bb86a5480',
     ],
-    savedDeals: []
+    savedDeals: [],
+    expandedDeals: [],
   };
 
   const store = storeConfig(initialData);
