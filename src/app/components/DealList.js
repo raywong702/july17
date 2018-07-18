@@ -1,5 +1,6 @@
 import React from 'react';
 import Deal from './deal';
+import PropTypes from 'prop-types';
 
 class DealList extends React.Component {
   render() {
@@ -10,5 +11,13 @@ class DealList extends React.Component {
     );
   }
 }
+
+DealList.propTypes = {
+  deals: PropTypes.array
+};
+
+DealList.defaultProps = {
+  deals: [],
+};
 
 export default DealList;
