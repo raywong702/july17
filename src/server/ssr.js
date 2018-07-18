@@ -5,7 +5,7 @@ import axios from 'axios';
 import App from '../app/components/App';
 
 export default async () => {
-  const { data: deals } = await axios.get('https://bakesaleforgood.com/api/deals');
+  const { data: deals } = await axios.get('http://localhost:3000/api');
 
   const initialData = {
     deals,
