@@ -15,6 +15,7 @@ class Deal extends React.Component {
     return (
       <Consumer>
         {(appCtxValue) => {
+          const isDealSaved = appCtxValue.isDealSaved(this.props.id);
           return (
             <div className="deal" style={
               { color: this.props.price > 10000 ? 'green' : 'red' }
@@ -25,6 +26,11 @@ class Deal extends React.Component {
               {this.props.media.map((imageUrl) =>
                 <img key={imageUrl} src={imageUrl} width={100}/>
               )}
+              <div>
+                <button disabled={isDealSaved} onClick={() => appCtxValue.saveDeal(this.props.id)}>
+                  {isDealSaved ? 'Saved...': 'Save'}
+                </button>
+              </div>
             </div>
           );
         }}
