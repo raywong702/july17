@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 const mainReducer = (state, action) => {
   switch (action.type) {
@@ -12,8 +12,17 @@ const mainReducer = (state, action) => {
   }
 };
 
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(),
+);
+
 export default (initialData) => {
-  const store = createStore(mainReducer, initialData);
+  const store = createStore(mainReducer, initialData, enhancer);
 
   return store;
 };
