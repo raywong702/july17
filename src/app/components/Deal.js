@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-class Deal extends React.Component {
+export class Deal extends React.Component {
   displayPrice() {
     let { price } = this.props;
     if (this.props.discounts.includes(this.props.id)) {
@@ -16,7 +16,7 @@ class Deal extends React.Component {
       <div className="deal" style={
         { color: this.props.price > 10000 ? 'green' : 'red' }
       }>
-        <h3 onClick={() => this.props.toggleDeal(this.props.id)}>{this.props.title}</h3>
+        <h2 onClick={() => this.props.toggleDeal(this.props.id)}>{this.props.title}</h2>
         {this.props.isExpanded && (
           <React.Fragment>
             <div>{this.props.cause.name}</div>

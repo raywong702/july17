@@ -1,37 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
-const mainReducer = (state, action) => {
-  switch (action.type) {
-    case 'SAVE_DEAL':
-      return {
-        ...state,
-        savedDeals: [...state.savedDeals, action.dealId],
-      };
-    case 'TOGGLE_DEAL':
-      if (state.expandedDeals.indexOf(action.dealId) >= 0) {
-        return {
-          ...state,
-          expandedDeals: state.expandedDeals.filter((dealId) => dealId !== action.dealId)
-        };
-      } else {
-        return {
-          ...state,
-          expandedDeals: [...state.expandedDeals, action.dealId],
-        };
-      }
-    case 'RECEIVED_DEALS':
-      return {
-        ...state,
-        deals: [
-          ...state.deals,
-          ...action.newDeals,
-        ]
-      };
-    default:
-      return state;
-  }
-};
+import mainReducer from './reducers';
 
 const composeEnhancers =
   typeof window === 'object' &&
