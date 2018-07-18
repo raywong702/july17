@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import ReduxThunk from 'redux-thunk';
 
 const mainReducer = (state, action) => {
   switch (action.type) {
@@ -19,6 +20,14 @@ const mainReducer = (state, action) => {
           expandedDeals: [...state.expandedDeals, action.dealId],
         };
       }
+    case 'RECEIVED_DEALS':
+      return {
+        ...state,
+        deals: [
+          ...state.deals,
+          ...action.newDeals,
+        ]
+      };
     default:
       return state;
   }
@@ -30,7 +39,7 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(),
+  applyMiddleware(ReduxThunk),
 );
 
 export default (initialData) => {

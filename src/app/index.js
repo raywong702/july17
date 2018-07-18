@@ -7,7 +7,7 @@ import storeConfig from './store/storeConfig';
 
 const store = storeConfig(window.initialData);
 
-ReactDOM.render (
+ReactDOM.hydrate (
   <Provider store={store}>
     <App />
   </Provider>,
