@@ -1,11 +1,10 @@
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
-import axios from 'axios';
 
 import App from '../app/components/App';
 
 export default async () => {
-  const { data: deals } = await axios.get('http://localhost:3000/api');
+  const deals = require('./data').default;
 
   const initialData = {
     deals,
