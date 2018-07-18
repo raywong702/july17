@@ -1,6 +1,7 @@
 import React from 'react';
 import Deal from './deal';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class DealList extends React.Component {
   render() {
@@ -26,4 +27,11 @@ DealList.defaultProps = {
   deals: [],
 };
 
-export default DealList;
+const mapStateToProps = (state) => {
+  const extraProps = {
+    deals: state.deals,
+  };
+  return extraProps;
+};
+
+export default connect(mapStateToProps)(DealList);
